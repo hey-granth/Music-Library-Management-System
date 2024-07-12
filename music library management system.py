@@ -1,23 +1,25 @@
 import mysql.connector as con
-db=con.connect(user='root',host='localhost',password='granth')
+db=con.connect(user='root',host='localhost',password='0829')
 if db.is_connected():
     print("connected")
-else:
-    print('not connected')
-    cur=db.cursor()
+    cur = db.cursor()
     cur.execute("create database python")
     cur.execute('use python')
     db.close()
-    db=con.connect(user='root',host='localhost',password='granth',database='python')
-    cur=db.cursor()
+    db = con.connect(user='root', host='localhost', password='0829', database='python')
+    cur = db.cursor()
     cur.execute('create table music (MusicCode int(3) primary key,Name varchar(20)not null,Artist varchar(20),Releases varchar(20),Price int(3),Genre varchar(20)default "N/A",Quantity int(3))')
     cur.execute('create table customer_details (Code int(3) primary key,CustomerName varchar(20),PhoneNo int(10),IssueDate date,ReturnDate date)')
     print('created')
     db.close()
+else:
+    print('not connected')
+    exit()
+
 #to add records in customdeets
 def cadd():
  
-    db=con.connect(user='root',host='localhost',password='granth',database='python')
+    db=con.connect(user='root',host='localhost',password='0829',database='python')
     cur=db.cursor()
     issdate=input('enter issue date')
     rtdate=input("enter return date you want to add")
@@ -34,7 +36,7 @@ def cadd():
 #to search by code in customdeets
 def searchbycode():
  
-    db=con.connect(user='root',host='localhost',password='granth',database='python')
+    db=con.connect(user='root',host='localhost',password='0829',database='python')
     cur=db.cursor()
     c=int(input("enter customer code you want to search"))
     sql='select * from customer_details where code=%s'
@@ -48,7 +50,7 @@ def searchbycode():
 #to search by name in customdeets
 def searchbyname():
  
-    db=con.connect(user='root',host='localhost',password='granth',database='python')
+    db=con.connect(user='root',host='localhost',password='0829',database='python')
     cur=db.cursor()
     n=input("enter customer name you want to search")
     sql='select * from customer_details where customername=%s'
@@ -61,7 +63,7 @@ def searchbyname():
     
 #to search by phone in customdeets
 def searchbyphone():
-    db=con.connect(user='root',host='localhost',password='granth',database='python')
+    db=con.connect(user='root',host='localhost',password='0829',database='python')
     cur=db.cursor()
     c=int(input("enter customer phone number you want to search"))
     sql='select * from customer_details where code=%s'
@@ -74,7 +76,7 @@ def searchbyphone():
     
 #to modify in customdeets
 def modify():
-    db=con.connect(host='localhost',user='root',password='granth',database='python')
+    db=con.connect(host='localhost',user='root',password='0829',database='python')
     cur=db.cursor()
     code=int(input("enter customer code you want to modify details of"))
     ch=input("do you want to change name Y/N")
@@ -121,7 +123,7 @@ def cdel():
     
 #to add records in music
 def madd():
-    db=con.connect(user='root',host='localhost',password='granth',database='python')
+    db=con.connect(user='root',host='localhost',password='0829',database='python')
     cur=db.cursor()
     mcode=int(input("enter music code:"))
     mname=input("enter name of music:")
@@ -140,7 +142,7 @@ def madd():
 #to delete from music
 def mdel():
     e=int(input("enter no. of music name you want to delete"))
-    db=con.connect(user='root',host='localhost',password='granth',database='python')
+    db=con.connect(user='root',host='localhost',password='0829',database='python')
     cur=db.cursor()
     sql='delete from MUSIC where musiccode=%s'
     val=(e,)
@@ -150,7 +152,7 @@ def mdel():
     
 #search by code in music
 def msearchbycode():
-    db=con.connect(host='localhost',user='root',password='granth',database='python')
+    db=con.connect(host='localhost',user='root',password='0829',database='python')
     cur=db.cursor()
     mcode=int(input("enter music code you want to search"))
     sql='select * from MUSIC where musiccode=%s'
@@ -163,7 +165,7 @@ def msearchbycode():
     
 #search by name in music
 def msearchbyname():
-    db=con.connect(host='localhost',user='root',password='granth',database='python')
+    db=con.connect(host='localhost',user='root',password='0829',database='python')
     cur=db.cursor()
     n=input("enter music name you want to search")
     sql='select * from MUSIC where name=%s'
@@ -176,7 +178,7 @@ def msearchbyname():
     
 #search by artist in music
 def searchbyartist():
-    b=con.connect(host='localhost',user='root',password='granth',database='python')
+    b=con.connect(host='localhost',user='root',password='0829',database='python')
     cur=db.cursor()
     a=input("enter artist of songs you want to search")
     sql='select * from MUSIC where artist=%s'
@@ -189,7 +191,7 @@ def searchbyartist():
     db.close()
 #to search by genre in music
 def searchbygenre():
-    db=con.connect(host='localhost',user='root',password='granth',database='python')
+    db=con.connect(host='localhost',user='root',password='0829',database='python')
     cur=db.cursor()
     a=input("enter genre of songs you want to search")
     sql='select * from MUSIC where genre=%s'
@@ -202,7 +204,7 @@ def searchbygenre():
     db.close()
 #to modify in music
 def mmodify():
-    db=con.connect(host='localhost',user='root',password='granth',database='python')
+    db=con.connect(host='localhost',user='root',password='0829',database='python')
     cur=db.cursor()
     mcode=int(input("enter music code you want to modify details of"))
     ch=input("do you want to change name Y/N")
