@@ -4,16 +4,16 @@ if db.is_connected():
     print("connected")
 else:
     print('not connected')
-cur=db.cursor()
-cur.execute("create database python")
-cur.execute('use python')
-db.close()
-db=con.connect(user='root',host='localhost',password='granth',database='python')
-cur=db.cursor()
-cur.execute('create table music (MusicCode int(3) primary key,Name varchar(20)not null,Artist varchar(20),Releases varchar(20),Price int(3),Genre varchar(20)default "N/A",Quantity int(3))')
-cur.execute('create table customer_details (Code int(3) primary key,CustomerName varchar(20),PhoneNo int(10),IssueDate date,ReturnDate date)')
-print('created')
-db.close()
+    cur=db.cursor()
+    cur.execute("create database python")
+    cur.execute('use python')
+    db.close()
+    db=con.connect(user='root',host='localhost',password='granth',database='python')
+    cur=db.cursor()
+    cur.execute('create table music (MusicCode int(3) primary key,Name varchar(20)not null,Artist varchar(20),Releases varchar(20),Price int(3),Genre varchar(20)default "N/A",Quantity int(3))')
+    cur.execute('create table customer_details (Code int(3) primary key,CustomerName varchar(20),PhoneNo int(10),IssueDate date,ReturnDate date)')
+    print('created')
+    db.close()
 #to add records in customdeets
 def cadd():
  
